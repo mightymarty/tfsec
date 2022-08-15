@@ -109,4 +109,4 @@ require (
 	github.com/rivo/uniseg v0.2.0 // indirect
 )
 
-replace github.com/aquasecurity/tfsec => github.com/mightymarty/tfsec v1.0.1
+replace github.com/aquasecurity/tfsec => github.com/mightymarty/tfsec v1.0.2
