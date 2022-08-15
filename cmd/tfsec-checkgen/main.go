@@ -9,9 +9,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/aquasecurity/defsec/pkg/scan"
+	"github.com/mightymarty/tfsec/defsec/pkg/scan"
 
-	"github.com/aquasecurity/defsec/pkg/scanners/terraform"
+	"github.com/mightymarty/tfsec/defsec/pkg/scanners/terraform"
 
 	survey "github.com/AlecAivazis/survey/v2"
 	"github.com/aquasecurity/tfsec/internal/pkg/custom"

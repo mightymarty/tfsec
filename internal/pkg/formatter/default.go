@@ -6,13 +6,13 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/aquasecurity/defsec/pkg/scan"
-	scanner "github.com/aquasecurity/defsec/pkg/scanners/terraform"
+	"github.com/mightymarty/tfsec/defsec/pkg/scan"
+	scanner "github.com/mightymarty/tfsec/defsec/pkg/scanners/terraform"
 
-	"github.com/aquasecurity/defsec/pkg/formatters"
-	"github.com/aquasecurity/defsec/pkg/severity"
 	"github.com/liamg/clinch/terminal"
 	"github.com/liamg/tml"
+	"github.com/mightymarty/tfsec/defsec/pkg/formatters"
+	"github.com/mightymarty/tfsec/defsec/pkg/severity"
 )
 
 var severityFormat map[severity.Severity]string

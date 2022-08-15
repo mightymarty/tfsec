@@ -5,9 +5,9 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/aquasecurity/defsec/pkg/rules"
-	"github.com/aquasecurity/defsec/pkg/scan"
-	"github.com/aquasecurity/defsec/pkg/state"
+	"github.com/mightymarty/tfsec/defsec/pkg/rules"
+	"github.com/mightymarty/tfsec/defsec/pkg/scan"
+	"github.com/mightymarty/tfsec/defsec/pkg/state"
 	"github.com/stretchr/testify/assert"
 )
 

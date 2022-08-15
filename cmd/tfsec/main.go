@@ -3,9 +3,8 @@ package main
 import (
 	"errors"
 	"fmt"
+	"github.com/mightymarty/tfsec/internal/app/tfsec/cmd"
 	"os"
-
-	"github.com/aquasecurity/tfsec/internal/app/tfsec/cmd"
 )
 
 func main() {

@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/aquasecurity/defsec/pkg/rules"
+	"github.com/mightymarty/tfsec/defsec/pkg/rules"
 
 	"github.com/spf13/cobra"
 )

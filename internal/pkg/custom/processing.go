@@ -8,10 +8,10 @@ import (
 	"github.com/zclconf/go-cty/cty"
 	"github.com/zclconf/go-cty/cty/gocty"
 
-	"github.com/aquasecurity/defsec/pkg/providers"
-	"github.com/aquasecurity/defsec/pkg/rules"
-	"github.com/aquasecurity/defsec/pkg/scan"
-	"github.com/aquasecurity/defsec/pkg/terraform"
+	"github.com/mightymarty/tfsec/defsec/pkg/providers"
+	"github.com/mightymarty/tfsec/defsec/pkg/rules"
+	"github.com/mightymarty/tfsec/defsec/pkg/scan"
+	"github.com/mightymarty/tfsec/defsec/pkg/terraform"
 )
 
 var matchFunctions = map[CheckAction]func(*terraform.Block, *MatchSpec, *customContext) bool{

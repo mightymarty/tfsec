@@ -12,8 +12,8 @@ import (
 
 	"github.com/owenrumney/go-sarif/v2/sarif"
 
-	"github.com/aquasecurity/defsec/pkg/scan"
 	"github.com/aquasecurity/tfsec/internal/app/tfsec/cmd"
+	"github.com/mightymarty/tfsec/defsec/pkg/scan"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

@@ -3,6 +3,9 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/mightymarty/tfsec/internal/pkg/config"
+	"github.com/mightymarty/tfsec/internal/pkg/custom"
+	"github.com/mightymarty/tfsec/internal/pkg/legacy"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -10,20 +13,18 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/aquasecurity/defsec/pkg/scanners/options"
-	"github.com/aquasecurity/tfsec/internal/pkg/custom"
+	"github.com/mightymarty/tfsec/defsec/pkg/scanners/options"
+
 	"github.com/google/uuid"
 
-	"github.com/aquasecurity/defsec/pkg/scan"
+	"github.com/mightymarty/tfsec/defsec/pkg/scan"
 
 	"github.com/spf13/cobra"
 
-	scanner "github.com/aquasecurity/defsec/pkg/scanners/terraform"
-	"github.com/aquasecurity/defsec/pkg/severity"
+	scanner "github.com/mightymarty/tfsec/defsec/pkg/scanners/terraform"
+	"github.com/mightymarty/tfsec/defsec/pkg/severity"
 
-	"github.com/aquasecurity/defsec/pkg/state"
-	"github.com/aquasecurity/tfsec/internal/pkg/config"
-	"github.com/aquasecurity/tfsec/internal/pkg/legacy"
+	"github.com/mightymarty/tfsec/defsec/pkg/state"
 )
 
 var showVersion bool

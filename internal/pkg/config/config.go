@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/aquasecurity/defsec/pkg/severity"
+	"github.com/mightymarty/tfsec/defsec/pkg/severity"
 	"gopkg.in/yaml.v2"
 )
 

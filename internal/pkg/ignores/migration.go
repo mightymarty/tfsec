@@ -2,14 +2,13 @@ package ignores
 
 import (
 	"fmt"
+	"github.com/mightymarty/tfsec/internal/pkg/legacy"
 	"io/fs"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
-
-	"github.com/aquasecurity/tfsec/internal/pkg/legacy"
 )
 
 type migrationStatistic struct {

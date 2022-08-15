@@ -2,12 +2,12 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/mightymarty/tfsec/internal/pkg/ignores"
+	"github.com/mightymarty/tfsec/internal/pkg/updater"
 	"os"
 	"path/filepath"
 	"runtime"
 
-	"github.com/aquasecurity/tfsec/internal/pkg/ignores"
-	"github.com/aquasecurity/tfsec/internal/pkg/updater"
 	"github.com/aquasecurity/tfsec/version"
 	"github.com/liamg/tml"
 	"github.com/spf13/cobra"

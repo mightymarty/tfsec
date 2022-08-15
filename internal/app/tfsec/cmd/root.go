@@ -1,18 +1,21 @@
 package cmd
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"github.com/mightymarty/tfsec/internal/pkg/config"
+	"io"
 	"os"
 	"path/filepath"
 	"strings"
 
 	"github.com/Masterminds/semver"
-	debugging "github.com/aquasecurity/defsec/pkg/debug"
-	"github.com/aquasecurity/defsec/pkg/extrafs"
-	scanner "github.com/aquasecurity/defsec/pkg/scanners/terraform"
-	"github.com/aquasecurity/defsec/pkg/scanners/terraform/executor"
-	"github.com/aquasecurity/tfsec/internal/pkg/config"
+	debugging "github.com/mightymarty/tfsec/defsec/pkg/debug"
+	"github.com/mightymarty/tfsec/defsec/pkg/extrafs"
+	scanner "github.com/mightymarty/tfsec/defsec/pkg/scanners/terraform"
+	"github.com/mightymarty/tfsec/defsec/pkg/scanners/terraform/executor"
+
 	"github.com/aquasecurity/tfsec/version"
 	"github.com/spf13/cobra"
 )
@@ -100,6 +103,7 @@ func Root() *cobra.Command {
 			exitCode := getDetailedExitCode(metrics)
 			logger.Log("Exit code based on results: %d", exitCode)
 
+			format := "JSON"
 			formats := strings.Split(format, ",")
 			if err := output(cmd, outputFlag, formats, root, rel, results, metrics); err != nil {
 				return fmt.Errorf("failed to write output: %w", err)
@@ -117,6 +121,57 @@ func Root() *cobra.Command {
 
 	configureFlags(rootCmd)
 	return rootCmd
+}
+
+func RunTFScan(path string) (string, error) {
+
+	cmd := &cobra.Command{}
+	cmd.SilenceUsage = true
+
+	dir, err := findDirectory([]string{path})
+	if err != nil {
+		return "", err
+	}
+
+	root, rel, err := splitRoot(dir)
+	if err != nil {
+		return "", err
+	}
+
+	options, err := configureOptions(cmd, root, dir)
+	if err != nil {
+		return "", fmt.Errorf("invalid option: %w", err)
+	}
+
+	scnr := scanner.New(options...)
+	results, metrics, err := scnr.ScanFSWithMetrics(context.TODO(), extrafs.OSDir(root), rel)
+	if err != nil {
+		return "", fmt.Errorf("scan failed: %w", err)
+	}
+
+	if printRegoInput {
+		return "", nil
+	}
+
+	if runStatistics {
+		statistics := executor.Statistics{}
+		for _, result := range results {
+			statistics = executor.AddStatisticsCount(statistics, result)
+		}
+		var buf bytes.Buffer
+		w := io.MultiWriter(&buf, cmd.OutOrStdout())
+		statistics.PrintStatisticsTable(format, w)
+		return buf.String(), nil
+	}
+
+	exitCode := getDetailedExitCode(metrics)
+	logger.Log("Exit code based on results: %d", exitCode)
+
+	format := "JSON"
+	formats := strings.Split(format, ",")
+	output, err := outputReturned(cmd, outputFlag, formats, root, rel, results, metrics)
+
+	return output, err
 }
 
 func minVersionSatisfied(conf *config.Config) bool {

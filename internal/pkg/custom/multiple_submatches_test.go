@@ -3,8 +3,8 @@ package custom
 import (
 	"testing"
 
-	"github.com/aquasecurity/defsec/pkg/providers"
-	"github.com/aquasecurity/defsec/pkg/scan"
+	"github.com/mightymarty/tfsec/defsec/pkg/providers"
+	"github.com/mightymarty/tfsec/defsec/pkg/scan"
 
 	"github.com/stretchr/testify/assert"
 )

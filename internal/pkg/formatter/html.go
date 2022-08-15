@@ -5,10 +5,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/aquasecurity/defsec/pkg/severity"
+	"github.com/mightymarty/tfsec/defsec/pkg/severity"
 
-	"github.com/aquasecurity/defsec/pkg/formatters"
-	"github.com/aquasecurity/defsec/pkg/scan"
+	"github.com/mightymarty/tfsec/defsec/pkg/formatters"
+	"github.com/mightymarty/tfsec/defsec/pkg/scan"
 )
 
 func HTML() func(b formatters.ConfigurableFormatter, results scan.Results) error {

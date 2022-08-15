@@ -1,11 +1,11 @@
 package formatter
 
 import (
-	"github.com/aquasecurity/defsec/pkg/scan"
-	scanner "github.com/aquasecurity/defsec/pkg/scanners/terraform"
+	"github.com/mightymarty/tfsec/defsec/pkg/scan"
+	scanner "github.com/mightymarty/tfsec/defsec/pkg/scanners/terraform"
 
-	"github.com/aquasecurity/defsec/pkg/formatters"
 	"github.com/liamg/gifwrap/pkg/ascii"
+	"github.com/mightymarty/tfsec/defsec/pkg/formatters"
 )
 
 func GifWithMetrics(metrics scanner.Metrics, theme string, withColours bool) func(b formatters.ConfigurableFormatter, results scan.Results) error {
