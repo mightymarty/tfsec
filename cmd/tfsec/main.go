@@ -19,3 +19,7 @@ func main() {
 		os.Exit(1)
 	}
 }
+
+func ScanWrapper(path string) (string, error) {
+	return cmd.RunTFScan(path)
+}
