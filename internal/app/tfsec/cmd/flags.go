@@ -165,7 +165,7 @@ func configureOptions(cmd *cobra.Command, fsRoot, dir string) ([]options.Scanner
 	scannerOptions = append(
 		scannerOptions,
 		scanner.ScannerWithSingleThread(singleThreadedMode),
-		scanner.ScannerWithStopOnHCLError(!ignoreHCLErrors),
+		scanner.ScannerWithStopOnHCLError(ignoreHCLErrors),
 		scanner.ScannerWithStopOnRuleErrors(stopOnCheckError),
 		scanner.ScannerWithSkipDownloaded(excludeDownloaded),
 		scanner.ScannerWithAllDirectories(allDirs),
